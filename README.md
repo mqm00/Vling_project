@@ -2,9 +2,12 @@
 
 ## 실행 버전
 
-- **@apollo/federation**: ^0.38.1
-- **@apollo/gateway**: ^2.6.1
-- **@apollo/server**: ^4.9.5
+- **node.js**: v18.13.0
+- **npm**: 8.19.3
+- **mongoDB**: community@6.0
+- **apollo/federation**: ^0.38.1
+- **apollo/gateway**: ^2.6.1
+- **apollo/server**: ^4.9.5
 - **apollo-server**: ^3.13.0
 - **graphql-tag**: ^2.12.6
 - **module**: ^1.2.5
