@@ -31,7 +31,7 @@
 
 ## 연결 성공 시
 
-- 콘솔 로그: `Server ready at http://localhost:5110/ DB Connected successfully`
+- 콘솔 로그: `Server ready at http://localhost:5110/\DB Connected successfully`
 
 ## 연결 실패 시
 
