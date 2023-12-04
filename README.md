@@ -35,4 +35,4 @@
 
 ## 연결 실패 시
 
-(추가 내용이 없습니다.)
+- 콘솔 로그: `'Error starting the server:', error.message`
