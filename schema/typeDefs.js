@@ -3,9 +3,11 @@ const gql = require("graphql-tag");
 const typeDefs = gql`
 
   # Query안에 어떤 요청문이 들어오고 어떤 데이터가 반환될 것인가
+  # 주어진 schema 
 
   type Query {
     getExchangeRate(src:String!, tgt:String!): ExchangeInfo
+    getAllExchangeRates: [ExchangeInfo]
   }
   
   type Mutation {
