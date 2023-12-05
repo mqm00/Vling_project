@@ -1,5 +1,6 @@
 //mongodb에 만들어놓은 모델 가져오기
 const { ExchangeInfo } = require("../mongoDB/mongodb");
+const { UserInputError } = require('apollo-server');
 
 const resolvers = {
   Query: {
@@ -10,10 +11,14 @@ const resolvers = {
             .findOne({ src, tgt })
             .sort({ date: -1 })
             .exec();
+
+          if(!exchangeRate){
+            throw new Error("there is no data!!!");
+          }
+
           return exchangeRate;
         } catch(error){
           console.error(error);
-          throw new Error("Error get ExchangeRate.");
         }
 
     },
@@ -24,10 +29,14 @@ const resolvers = {
           .find({})
           .sort({date: -1})
           .exec();
+
+        if(!allExchangeRates){
+          throw new Error("there is no data!!!");
+        }
+
         return allExchangeRates;
       } catch(error){
         console.error(error);
-        throw new Error("Error get AllExchangeRate.");
       }
     },
   },
@@ -37,6 +46,13 @@ const resolvers = {
     postExchangeRate: async (_, { info } ) => {
       try{
         const { src, tgt, rate, date } = info;
+        const existingRate = await ExchangeInfo.findOne({ src, tgt, date });
+
+        // src와 tgt의 같은 날짜의 환율이 이미 DB에 존재하는 경우 에러 호출
+        if (existingRate) {
+            throw new Error("Exchange rate already exists!!!");
+        }
+
         const newExchangeRate = new ExchangeInfo(info);
 
         //source와 target이 같을 때의 예외처리
@@ -52,7 +68,6 @@ const resolvers = {
         return newExchangeRate;
     } catch(error){
       console.error(error);
-      throw new Error("Error Create Info");
     }
     },
 
@@ -61,10 +76,12 @@ const resolvers = {
       try{
         const {src, tgt, date} = info;
         const deletedExchangeRate = await ExchangeInfo.findOneAndDelete({ src, tgt, date });
+        if(!deletedExchangeRate){
+          throw new Error("there is no data!!!");
+        }
         return deletedExchangeRate;
       } catch(error){
         console.error(error);
-        throw new Error("Error Delete Info");
       }
     },
   },
