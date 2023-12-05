@@ -1,4 +1,5 @@
-# Vling_project
+## bzznbyd_project
+## Lee Seungsu
 
 ## 실행 버전
 
