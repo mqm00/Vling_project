@@ -27,7 +27,7 @@
 ## 실행 방법
 
 1. **MongoDB**: `brew services start mongodb-community@6.0` (터미널에서 실행)
-2. **index.js**: `npm start` (Vling_project 폴더에서 실행)
+2. **index.js**: `npm start` (bzznbyd_project 폴더에서 실행)
 
 ## 연결 성공 시
 
