@@ -1,7 +1,5 @@
 # Vling_project
 
-<a href="[https://www.google.com/](https://www.notion.so/GraphQL-MongoDB-CRUD-e8a2debbc7e940fdbf6057bdb8790b02?pvs=4)" target="_blank">프로젝트 관련 리서치</a>
-
 ## 실행 버전
 
 - **node.js**: v18.13.0
